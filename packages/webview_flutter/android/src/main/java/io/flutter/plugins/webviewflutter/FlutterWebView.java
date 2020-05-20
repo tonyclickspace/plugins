@@ -43,6 +43,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
         (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
     displayListenerProxy.onPreWebViewInitialization(displayManager);
     webView = new InputAwareWebView(context, containerView);
+    webView.setBackgroundColor(0x00000000);
     displayListenerProxy.onPostWebViewInitialization(displayManager);
 
     platformThreadHandler = new Handler(context.getMainLooper());
@@ -183,6 +184,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     if (headers == null) {
       headers = Collections.emptyMap();
     }
+    webView.setBackgroundColor(0x00000000);
     webView.loadUrl(url, headers);
     result.success(null);
   }
